@@ -6,19 +6,155 @@
     <link href="style.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <script src="./script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800family=Lato:wght@700&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="./data/products.js" charset="UTF-8"></script>
+    <script src="./data/questions.js"></script>
+    <script src="./question.js"></script>
+    <script src="./result.js"></script>
+    <script src="./algorithm.js"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-light bg-light header" style="margin: 0;">
-        <a class="navbar-brand" href="#">
-            <img src="images/ggyu_logo.png" width="30" height="30" alt="">
+        <a class="navbar-brand" href="./index.html">
+            <img id="logo" src="images/ggyu_logo_color.png" width="30" height="30" alt="">
         </a>
     </nav>
 
     <div id="section">
+        <!-- div for intro page -->
+        <div id="intro" align="center">
+            <div id="intro_guide">
+                <h1 id="intro_guide_main">Is there a product that comes to your mind<br>but you don't know name?</h1>
+            </br>
+                <div id="intro_guide_detail">We help you to find it with your answers!</div>
+            </div>
+            <div id="intro_examples">
+                <div id="intro_examples_image">
+                    <div id="intro_examples_image_text">Products that other user found</div>
+                    <ul class="intro_examples_image_ul">
+                        <!-- <li class="intro_examples_image_li">
+                            <img src="../images/sample.png" class="intro_examples_image_src">
+                            <div>product name 1</div>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <div id="intro_start">
+                <button id="intro_start_btn" type="button" class="btn-custom">START</button>
+            </div>
+        </div>
 
+        <!-- div for fail page -->
+        <div id="fail">
+            <input type="image" class="back_button" src="images/icon_back.png">
+            <div id="fail_image_item">
+                <!--img src="./images/no_idea.jpg" class="fail_image"-->
+            </div>
+            <div id="fail_text">
+                <h2 id="fail_text_main">Sorry, we cannot find</h2>
+                <div id="fail_text_detail">It's hard to specify a product in our knowledge<br>based on your answers...</b>
+                </div>
+            </div>
+            <div id="fail_button">
+                <button id="fail_go_intro" type="button" class="btn-custom">Back To Home</button>
+            </div>
+        </div>
+
+        <!-- div for result page -->
+        <div id="result">
+            <input type="image" class="back_button" src="images/icon_back.png">
+            <div id ="result_middle" class="wrapper w100 h60">
+                    <div class = "center_align content w50">
+                        <div class = "wrapper">
+                            <div class = "bold30 content">
+                                <img id="product_img" src = "../images/image-placeholder.png">
+                                <p id = "product_text"> Product name</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "center_align content w50">
+                        <div class = "wrapper">
+                            <div class = "bold30 content">
+                                <p> Is this what you thought? </p>
+                            </br>
+                                <button class="answer_button" id = "result_yes">YES! (Go to buy page)</button>
+                                <button class="answer_button" id = "result_no">No.. (Keep answering)</button>
+                                <button class="answer_button" id = "result_back">No.. (Back to question)</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div id="result_bottom">
+                <div class="wrapper w100">
+                    <div class="normal20 left_align content">
+                            <p>Other images of "Macrame"</p>
+                            <img class = "alternative" src = "../images/image-placeholder.png">
+                            <img class = "alternative" src = "../images/image-placeholder.png">
+                            <img class = "alternative" src = "../images/image-placeholder.png">
+                            <img class = "alternative" src = "../images/image-placeholder.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- div for question page -->
+        <div id="question">
+            <div class="question_bg">
+                <input type="image" class="back_button" src="images/icon_back.png">
+                <div class="query">
+                    <div class="question">
+                    </div>
+                    <div class="choices">
+                    </div>
+                </div>
+            </div>
+
+            <div class="candidate_bg">
+                <div id = "div1" class = "imgdiv">
+                <input type = "image" id = "image1" class = "candidates" src = "images/image-placeholder.png">
+                </div>
+                <div id = "wrongdiv1" class = "wrongimgdiv">
+                <img id = "wrongimage1" class = "candidates" src = "images/wrong.jpg">
+                </div>
+                <div id = "div2" class = "imgdiv">
+                <input type = "image" id = "image2" class = "candidates" src = "images/image-placeholder.png">
+                </div>
+                <div id = "wrongdiv2" class = "wrongimgdiv">
+                <img id = "wrongimage2" class = "candidates" src = "images/wrong.jpg">
+                </div><div id = "div3" class = "imgdiv">
+                <input type = "image" id = "image3" class = "candidates" src = "images/image-placeholder.png">
+                </div>
+                <div id = "wrongdiv3" class = "wrongimgdiv">
+                <img id = "wrongimage3" class = "candidates" src = "images/wrong.jpg">
+                </div><div id = "div4" class = "imgdiv">
+                <input type = "image" id = "image4" class = "candidates" src = "images/image-placeholder.png">
+                </div>
+                <div id = "wrongdiv4" class = "wrongimgdiv">
+                <img id = "wrongimage4" class = "candidates" src = "images/wrong.jpg">
+                </div><div id = "div5" class = "imgdiv">
+                <input type = "image" id = "image5" class = "candidates" src = "images/image-placeholder.png">
+                </div>
+                <div id = "wrongdiv5" class = "wrongimgdiv">
+                <img id = "wrongimage5" class = "candidates" src = "images/wrong.jpg">
+                </div><div id = "div6" class = "imgdiv">
+                <input type = "image" id = "image6" class = "candidates" src = "images/image-placeholder.png">
+                </div>
+                <div id = "wrongdiv6" class = "wrongimgdiv">
+                <img id = "wrongimage6" class = "candidates" src = "images/wrong.jpg">
+                </div><div id = "div7" class = "imgdiv">
+                <input type = "image" id = "image7" class = "candidates" src = "images/image-placeholder.png">
+                </div>
+                <div id = "wrongdiv7" class = "wrongimgdiv">
+                <img id = "wrongimage7" class = "candidates" src = "images/wrong.jpg">
+                </div><div id = "div8" class = "imgdiv">
+                <input type = "image" id = "image8" class = "candidates" src = "images/image-placeholder.png">
+                </div>
+                <div id = "wrongdiv8" class = "wrongimgdiv">
+                <img id = "wrongimage8" class = "candidates" src = "images/wrong.jpg">
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="./script.js"></script>
