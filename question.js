@@ -54,6 +54,7 @@ async function newQ(qni){
         if(newPIds.includes(imgpnt[i])){
             var div = document.getElementById(`div${i}`);
             var img = curimgs.find(x=>x.pId==imgpnt[i]);
+	    $("#image_text"+i).text(img.name);
             putImageAndFadeIn(div,i,img.mainImage);
         }
     }

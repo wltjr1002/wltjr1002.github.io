@@ -1,12 +1,22 @@
 const fadeTime = 500;
 
+function getBuyLink(name) {
+    return `https://search.shopping.naver.com/search/all?query=${encodeURI(name)}&frm=NVSHATC`
+}
+
 function set_intro() {
     const introImages = getIntroImages();
     for (let i = 0; i < introImages.length; i++) {
+		const { name, mainImage } = introImages[i] 
+
         const sampleImageItem = `
-            <li class="intro_examples_image_li">
-                <img src="${introImages[i].mainImage}" class="intro_examples_image_src">
-                <div>${introImages[i].name}</div>
+			<li class="intro_examples_image_li">
+				<a href="${getBuyLink(name)}">
+                	<img src="${mainImage}" class="intro_examples_image_src" onclick="location.href=\"${getBuyLink(name)}\"">
+					<div class="image_textbox">
+						<p class="question_imgdiv_image_text">${name}</p>
+					</div>
+				</a>
             </li>`;
         
         $(".intro_examples_image_ul").append(sampleImageItem);

@@ -6,7 +6,9 @@
     <link href="style.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800family=Lato:wght@700&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800family=Lato:wght@700&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
     <script src="./data/products.js" charset="UTF-8"></script>
     <script src="./data/questions.js"></script>
     <script src="./question.js"></script>
@@ -26,7 +28,7 @@
         <div id="intro" align="center">
             <div id="intro_guide">
                 <h1 id="intro_guide_main">Is there a product that comes to your mind<br>but you don't know name?</h1>
-            </br>
+                </br>
                 <div id="intro_guide_detail">We help you to find it with your answers!</div>
             </div>
             <div id="intro_examples">
@@ -53,7 +55,8 @@
             </div>
             <div id="fail_text">
                 <h2 id="fail_text_main">Sorry, we cannot find</h2>
-                <div id="fail_text_detail">It's hard to specify a product in our knowledge<br>based on your answers...</b>
+                <div id="fail_text_detail">It's hard to specify a product in our knowledge<br>based on your
+                    answers...</b>
                 </div>
             </div>
             <div id="fail_button">
@@ -64,35 +67,35 @@
         <!-- div for result page -->
         <div id="result">
             <input type="image" class="back_button" src="images/icon_back.png">
-            <div id ="result_middle" class="wrapper w100 h60">
-                    <div class = "center_align content w50">
-                        <div class = "wrapper">
-                            <div class = "bold30 content">
-                                <img id="product_img" src = "../images/image-placeholder.png">
-                                <p id = "product_text"> Product name</p>
-                            </div>
+            <div id="result_middle" class="wrapper w100 h60">
+                <div class="center_align content w50">
+                    <div class="wrapper">
+                        <div class="bold30 content">
+                            <img id="product_img" src="../images/image-placeholder.png">
+                            <p id="product_text"> Product name</p>
                         </div>
                     </div>
-                    <div class = "center_align content w50">
-                        <div class = "wrapper">
-                            <div class = "bold30 content">
-                                <p> Is this what you thought? </p>
+                </div>
+                <div class="center_align content w50">
+                    <div class="wrapper">
+                        <div class="bold30 content">
+                            <p> Is this what you thought? </p>
                             </br>
-                                <button class="answer_button" id = "result_yes">YES! (Go to buy page)</button>
-                                <button class="answer_button" id = "result_no">No.. (Keep answering)</button>
-                                <button class="answer_button" id = "result_back">No.. (Back to question)</button>
-                            </div>
+                            <button class="answer_button" id="result_yes">YES! (Go to buy page)</button>
+                            <button class="answer_button" id="result_no">No.. (Keep answering)</button>
+                            <button class="answer_button" id="result_back">No.. (Back to question)</button>
                         </div>
                     </div>
+                </div>
             </div>
             <div id="result_bottom">
                 <div class="wrapper w100">
                     <div class="normal20 left_align content">
-                            <p>Other images of "Macrame"</p>
-                            <img class = "alternative" src = "../images/image-placeholder.png">
-                            <img class = "alternative" src = "../images/image-placeholder.png">
-                            <img class = "alternative" src = "../images/image-placeholder.png">
-                            <img class = "alternative" src = "../images/image-placeholder.png">
+                        <p>Other images of "Macrame"</p>
+                        <img class="alternative" src="../images/image-placeholder.png">
+                        <img class="alternative" src="../images/image-placeholder.png">
+                        <img class="alternative" src="../images/image-placeholder.png">
+                        <img class="alternative" src="../images/image-placeholder.png">
                     </div>
                 </div>
             </div>
@@ -111,47 +114,82 @@
             </div>
 
             <div class="candidate_bg">
-                <div id = "div1" class = "imgdiv">
-                <input type = "image" id = "image1" class = "candidates" src = "images/image-placeholder.png">
+                <div id="candid_discdiv">
+                    <p id="question_candidate_image_text">Maybe one of these..?</p>
                 </div>
-                <div id = "wrongdiv1" class = "wrongimgdiv">
-                <img id = "wrongimage1" class = "candidates" src = "images/wrong.jpg">
-                </div>
-                <div id = "div2" class = "imgdiv">
-                <input type = "image" id = "image2" class = "candidates" src = "images/image-placeholder.png">
-                </div>
-                <div id = "wrongdiv2" class = "wrongimgdiv">
-                <img id = "wrongimage2" class = "candidates" src = "images/wrong.jpg">
-                </div><div id = "div3" class = "imgdiv">
-                <input type = "image" id = "image3" class = "candidates" src = "images/image-placeholder.png">
-                </div>
-                <div id = "wrongdiv3" class = "wrongimgdiv">
-                <img id = "wrongimage3" class = "candidates" src = "images/wrong.jpg">
-                </div><div id = "div4" class = "imgdiv">
-                <input type = "image" id = "image4" class = "candidates" src = "images/image-placeholder.png">
-                </div>
-                <div id = "wrongdiv4" class = "wrongimgdiv">
-                <img id = "wrongimage4" class = "candidates" src = "images/wrong.jpg">
-                </div><div id = "div5" class = "imgdiv">
-                <input type = "image" id = "image5" class = "candidates" src = "images/image-placeholder.png">
-                </div>
-                <div id = "wrongdiv5" class = "wrongimgdiv">
-                <img id = "wrongimage5" class = "candidates" src = "images/wrong.jpg">
-                </div><div id = "div6" class = "imgdiv">
-                <input type = "image" id = "image6" class = "candidates" src = "images/image-placeholder.png">
-                </div>
-                <div id = "wrongdiv6" class = "wrongimgdiv">
-                <img id = "wrongimage6" class = "candidates" src = "images/wrong.jpg">
-                </div><div id = "div7" class = "imgdiv">
-                <input type = "image" id = "image7" class = "candidates" src = "images/image-placeholder.png">
-                </div>
-                <div id = "wrongdiv7" class = "wrongimgdiv">
-                <img id = "wrongimage7" class = "candidates" src = "images/wrong.jpg">
-                </div><div id = "div8" class = "imgdiv">
-                <input type = "image" id = "image8" class = "candidates" src = "images/image-placeholder.png">
-                </div>
-                <div id = "wrongdiv8" class = "wrongimgdiv">
-                <img id = "wrongimage8" class = "candidates" src = "images/wrong.jpg">
+                <div id="candid_imgdiv">
+                    <div id="div1" class="imgdiv">
+                        <input type="image" id="image1" class="candidates" src="images/image-placeholder.png">
+                        <div class="image_textbox">
+                            <p id="image_text1" class="question_imgdiv_image_text">text</p>
+                        </div>
+                    </div>
+                    <div id="wrongdiv1" class="wrongimgdiv">
+                        <img id="wrongimage1" class="candidates" src="images/wrong.jpg">
+                    </div>
+                    <div id="div2" class="imgdiv">
+                        <input type="image" id="image2" class="candidates" src="images/image-placeholder.png">
+                        <div class="image_textbox">
+                            <p id="image_text2" class="question_imgdiv_image_text">text</p>
+                        </div>
+                    </div>
+                    <div id="wrongdiv2" class="wrongimgdiv">
+                        <img id="wrongimage2" class="candidates" src="images/wrong.jpg">
+                    </div>
+                    <div id="div3" class="imgdiv">
+                        <input type="image" id="image3" class="candidates" src="images/image-placeholder.png">
+                        <div class="image_textbox">
+                            <p id="image_text3" class="question_imgdiv_image_text">text</p>
+                        </div>
+                    </div>
+                    <div id="wrongdiv3" class="wrongimgdiv">
+                        <img id="wrongimage3" class="candidates" src="images/wrong.jpg">
+                    </div>
+                    <div id="div4" class="imgdiv">
+                        <input type="image" id="image4" class="candidates" src="images/image-placeholder.png">
+                        <div class="image_textbox">
+                            <p id="image_text4" class="question_imgdiv_image_text">text</p>
+                        </div>
+                    </div>
+                    <div id="wrongdiv4" class="wrongimgdiv">
+                        <img id="wrongimage4" class="candidates" src="images/wrong.jpg">
+                    </div>
+                    <div id="div5" class="imgdiv">
+                        <input type="image" id="image5" class="candidates" src="images/image-placeholder.png">
+                        <div class="image_textbox">
+                            <p id="image_text5" class="question_imgdiv_image_text">text</p>
+                        </div>
+                    </div>
+                    <div id="wrongdiv5" class="wrongimgdiv">
+                        <img id="wrongimage5" class="candidates" src="images/wrong.jpg">
+                    </div>
+                    <div id="div6" class="imgdiv">
+                        <input type="image" id="image6" class="candidates" src="images/image-placeholder.png">
+                        <div class="image_textbox">
+                            <p id="image_text6" class="question_imgdiv_image_text">text</p>
+                        </div>
+                    </div>
+                    <div id="wrongdiv6" class="wrongimgdiv">
+                        <img id="wrongimage6" class="candidates" src="images/wrong.jpg">
+                    </div>
+                    <div id="div7" class="imgdiv">
+                        <input type="image" id="image7" class="candidates" src="images/image-placeholder.png">
+                        <div class="image_textbox">
+                            <p id="image_text7" class="question_imgdiv_image_text">text</p>
+                        </div>
+                    </div>
+                    <div id="wrongdiv7" class="wrongimgdiv">
+                        <img id="wrongimage7" class="candidates" src="images/wrong.jpg">
+                    </div>
+                    <div id="div8" class="imgdiv">
+                        <input type="image" id="image8" class="candidates" src="images/image-placeholder.png">
+                        <div class="image_textbox">
+                            <p id="image_text8" class="question_imgdiv_image_text">text</p>
+                        </div>
+                    </div>
+                    <div id="wrongdiv8" class="wrongimgdiv">
+                        <img id="wrongimage8" class="candidates" src="images/wrong.jpg">
+                    </div>
                 </div>
             </div>
         </div>

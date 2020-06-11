@@ -126,6 +126,7 @@ function doQuitAnimation(){
     function frame(){
         if (pos==100){
             clearInterval(id);
+	    $("#result").hide();
         }
         else {
             pos++;
