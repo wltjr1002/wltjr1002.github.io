@@ -42,6 +42,11 @@ function getNextQuestionAndImages(answerIndex, chosenPId, excludePId) {
     return getNextData();
 }
 
+function isAcceptableScore(score, questionNum) {
+    const correctP = score * 100 / questionNum
+    return correctP > 80
+}
+
 function getNextData() {
     const excludePIds = answers.filter(a => a.excludePId !== undefined).map(a => a.excludePId);
     const qAnswers = answers.filter(a => a.questionIndex !== undefined);
@@ -88,7 +93,7 @@ function getNextData() {
         return productScores[0].product;
     }
     
-    const candidateProducts = productScores.filter(ps => ps.score > 0)
+    const candidateProducts = productScores.filter(ps => isAcceptableScore(ps.score, qAnswers.length))
         .map(ps => ps.product);
     // if every product has 0 score, return fail
     if (candidateProducts.length === 0) {
