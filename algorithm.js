@@ -44,7 +44,7 @@ function getNextQuestionAndImages(answerIndex, chosenPId, excludePId) {
 
 function isAcceptableScore(score, questionNum) {
     const correctP = score * 100 / questionNum
-    return correctP > 80
+    return correctP > 50
 }
 
 function getNextData() {
