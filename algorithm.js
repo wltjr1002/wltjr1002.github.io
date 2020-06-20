@@ -88,12 +88,15 @@ function getNextData() {
 
     // sort product by score
     sortListByProperty(productScores, "score");
+    const topScore = productScores[0].score;
     // if one product has unique highest score, return it
-    if (productScores[0].score != productScores[1].score) {
+    if (topScore != productScores[1].score) {
         return productScores[0].product;
     }
     
-    const candidateProducts = productScores.filter(ps => isAcceptableScore(ps.score, qAnswers.length))
+    const candidateProducts = productScores
+        .filter(ps => isAcceptableScore(ps.score, qAnswers.length))
+        .filter(ps => ps.score === topScore)
         .map(ps => ps.product);
     // if every product has 0 score, return fail
     if (candidateProducts.length === 0) {
