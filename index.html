@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800family=Lato:wght@700&family=Roboto:wght@100;300;400;500;700;900&display=swap"
-        rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Nunito:wght@200;300;400;600;700;800&family=Noto+Sans+KR:wght@400;500;600&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/48bb30a127.js" crossorigin="anonymous"></script>
     <script src="./data/products.js" charset="UTF-8"></script>
     <script src="./data/questions.js"></script>
     <script src="./question.js"></script>
@@ -25,25 +26,28 @@
 
     <div id="section">
         <!-- div for intro page -->
-        <div id="intro" align="center">
+        <div id="intro" align="left">
             <div id="intro_guide">
-                <h1 id="intro_guide_main">For the people who know image of product not name</h1>
+                <h1 id="intro_guide_main">Want to find THAT thing<br>stuck in your head?</h1>
                 </br>
-                <div id="intro_guide_detail">We help you to find its name with your answers!</div>
-            </div>
-            <div id="intro_start">
-                <button id="intro_start_btn" type="button" class="btn-custom">START</button>
-            </div>
-            <div id="intro_examples">
-                <div id="intro_examples_image">
-                    <div id="intro_examples_image_text">Products that other user found</div>
-                    <ul class="intro_examples_image_ul">
-                        <!-- <li class="intro_examples_image_li">
-                            <img src="../images/sample.png" class="intro_examples_image_src">
-                            <div>product name 1</div>
-                        </li> -->
-                    </ul>
+                <div id="intro_guide_detail">Is there a product that you want to buy but don’t know the name? We will help you to find it if you answer some questions!</div>
+                <div id="intro_btn_wrap">
+                    <button id="intro_start_btn" type="button" class="btn btn-primary btn-lg">
+                        <span>
+                            START FINDING
+                        </span>
+                        <span>
+                            <i class="fas fa-caret-right" style="margin-left: 8px; font-size: 23px;"></i>
+                        </span>
+                    </button>
                 </div>
+                
+            </div>
+            
+            <div id="intro_right">
+                <div id="intro_background"><img src="./images/intro_background.png" alt=""></div>
+                <div id="intro_recent_product_text">Someone else<br>recently found this</div>
+                <div id="intro_recent_product"></div>
             </div>
         </div>
 
@@ -118,6 +122,9 @@
                     <p id="question_candidate_image_text">Maybe one of these..</p>
                 </div>
                 <div id="candid_imgdiv">
+                    <div id = "no_candid_div">
+                        <h1 id="no_candid_text">No candidates</h1>
+                    </div>
                     <div id="div1" class="imgdiv">
                         <input type="image" id="image1" class="candidates" src="images/image-placeholder.png">
                         <div class="image_textbox">
