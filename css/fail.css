@@ -1,0 +1,53 @@
+@import "style.css";
+
+#fail {
+    width: 1200px;
+    height: 100%;
+    margin: auto;
+    background-color: #FFFFFF;
+    background-image: url("../images/no_idea.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#fail_back_button{
+    width: 550px;
+    height: 400px;
+    padding: 50px;
+    padding-bottom: 50px;
+    margin: auto;
+}
+#fail_back_button .back_button{
+    left:5%;
+}
+
+.fail_image {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+#fail_text {
+    margin: auto;
+    margin-left: 50%;
+    text-align: left;
+}
+
+#fail_text_main {
+    font-size: 30px;
+}
+
+#fail_text_detail {
+    font-size: 20px;
+}
+
+#fail_button button{
+    margin-top: 60px;
+    margin-left: 12.5%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}

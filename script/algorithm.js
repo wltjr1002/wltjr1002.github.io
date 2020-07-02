@@ -1,4 +1,4 @@
-const maxImageLimit = 8;
+const maxImageLimit = 10;
 
 let answers = [];
 let currentQuestionIndex = undefined;
@@ -19,6 +19,7 @@ let currentQuestionIndex = undefined;
 //              images(Object List { pId(Number), name(String), mainImage(String) })
 //          }
 function getNextQuestionAndImages(answerIndex, chosenPId, excludePId) {
+    // console.log({ answerIndex, chosenPId, excludePId });
     if (currentQuestionIndex === undefined) {
         currentQuestionIndex = 0;
         

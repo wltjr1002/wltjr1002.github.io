@@ -1,0 +1,121 @@
+@import "style.css";
+
+#result {
+    margin: auto;
+    width: 1200px;
+    height: 100%;
+    background: #FFFFFF;
+    /* margin-top:100%; */
+    margin-left:-600px;
+    position: absolute;
+    top:0px;
+    left:50%;
+    z-index: 1;
+}
+
+#result_backbutton_div {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    position:relative;
+}
+
+#result_images_div {
+    width: 100%;
+    height: 60%;
+    position: relative;
+}
+
+#result_images_main_image {
+    width: 500px;
+    margin: 10px;
+    position: absolute;
+    /* left: calc(50% - 250px - 70px); */
+    left: 260px;
+    top: 10px;
+}
+
+#result_images_other {
+    width: 160px;
+    height: 500px;
+    margin: 10px;
+    position: absolute;
+    /* left: calc(50% + 250px - 70px + 5px); */
+    right: 260px;
+}
+
+.result_images_other_image {
+    display: table-cell;
+    width: 160px;
+    margin: 10px;
+}
+
+#result_answer_div {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    margin-top: 2%;
+}
+
+#result_answer_text {
+    margin: auto;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#result_button_div {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+}
+
+#result_yes {
+    display: inline-block;
+    margin: 30px;
+    border-color:var(--naver_green);
+}
+#result_yes:hover {
+    background-color: var(--naver_green);
+    color: white;
+}
+#result_no {
+    display: inline-block;
+    margin: 30px;
+}
+#result_no:hover {
+    background-color: var(--naver_lightgrey);
+}
+#result_back:hover {
+    background-color: var(--naver_lightgrey);
+}
+
+.answer_button{
+    margin: 8px;
+    width: 300px;
+    height: 55px;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    border: solid 2px;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.answer_button:focus{
+    outline: none;
+}
+.alternative {
+    width: 24%;
+}
+
+.down_button{
+    width: 80px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+}
+.down_button:focus{
+    outline: none;
+}

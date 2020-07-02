@@ -55,7 +55,7 @@ function set_question(){
 			reset_query();
 			await fadeInComponentById("intro");
 		} else {
-			newQ(prevQni);
+			newQ(prevQni,true);
 		}
 	});
 	
@@ -69,7 +69,7 @@ function set_question(){
 }
 
 function set_result(){
-	$("#result .back_button").click(function(){
+	$("#result .down_button").click(function(){
 		var nextData = undoAnswer();
 		if(nextData.pId !== undefined){
 			newQ(nextData);
@@ -79,17 +79,6 @@ function set_result(){
 			newQ(nextData);
 		}
 	});
-	
-	$("#result_back").click(function(){
-		var nextData = undoAnswer();
-		if(nextData.pId !== undefined){
-			newQ(nextData);
-		}
-		else {
-			resultQuitAnimation();
-			newQ(nextData);
-		}
-	})
 	
 }
 

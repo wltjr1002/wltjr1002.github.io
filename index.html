@@ -3,24 +3,28 @@
 
 <head>
     <title>Young&Gute</title>
+    <link href="./css/style.css" rel="stylesheet" />
+    <link href="./css/intro.css" rel="stylesheet" />
+    <link href="./css/fail.css" rel="stylesheet" />
+    <link href="./css/question.css" rel="stylesheet" />
+    <link href="./css/result.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link href="style.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&family=Noto+Sans+KR:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Nunito:wght@200;300;400;600;700;800&family=Noto+Sans+KR:wght@400;500;600&family=Roboto:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet" />
     <script src="https://kit.fontawesome.com/48bb30a127.js" crossorigin="anonymous"></script>
     <script src="./data/products.js" charset="UTF-8"></script>
     <script src="./data/questions.js"></script>
-    <script src="./question.js"></script>
-    <script src="./result.js"></script>
-    <script src="./algorithm.js"></script>
+    <script src="./script/question.js"></script>
+    <script src="./script/result.js"></script>
+    <script src="./script/algorithm.js"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-light bg-light header" style="margin: 0;">
         <a class="navbar-brand" href="./index.html">
-            <img id="logo" src="images/ggyu_logo_color.png" width="30" height="30" alt="">
+            <img id="logo" src="images/ggyu_logo_white.png" width="30" height="30" alt="">
         </a>
     </nav>
 
@@ -53,9 +57,8 @@
 
         <!-- div for fail page -->
         <div id="fail">
-            <input type="image" class="back_button" src="images/icon_back.png">
-            <div id="fail_image_item">
-                <!--img src="./images/no_idea.jpg" class="fail_image"-->
+            <div id = "fail_back_button">
+                <input type="image" class="back_button" src="images/icon_back_2.png">
             </div>
             <div id="fail_text">
                 <h2 id="fail_text_main">Sorry, we cannot find</h2>
@@ -70,48 +73,37 @@
 
         <!-- div for result page -->
         <div id="result">
-            <input type="image" class="back_button" src="images/icon_back.png">
-            <div id="result_middle" class="wrapper w100 h60">
-                <div class="center_align content w50">
-                    <div class="wrapper">
-                        <div class="bold30 content">
-                            <img id="product_img" src="../images/image-placeholder.png">
-                            <p id="product_text"> Product name</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="center_align content w50">
-                    <div class="wrapper">
-                        <div class="bold30 content">
-                            <p> Is this what you thought? </p>
-                            </br>
-                            <button class="answer_button" id="result_yes">YES! (Go to buy page)</button>
-                            <button class="answer_button" id="result_no">No.. (Keep answering)</button>
-                            <button class="answer_button" id="result_back">No.. (Back to question)</button>
-                        </div>
-                    </div>
+            <div id="result_backbutton_div">
+                <input type="image" class="down_button" src="images/icon_down.png">
+            </div>
+            
+            <div id="result_images_div">
+                <img id="result_images_main_image" src="./images/image-placeholder.png">
+                <div id="result_images_other">
+                    <img class="result_images_other_image" src="./images/image-placeholder.png">
+                    <img class="result_images_other_image" src="./images/image-placeholder.png">
+                    <img class="result_images_other_image" src="./images/image-placeholder.png">
                 </div>
             </div>
-            <div id="result_bottom">
-                <div class="wrapper w100">
-                    <div class="normal20 left_align content">
-                        <p>Other images of "Macrame"</p>
-                        <img class="alternative" src="../images/image-placeholder.png">
-                        <img class="alternative" src="../images/image-placeholder.png">
-                        <img class="alternative" src="../images/image-placeholder.png">
-                        <img class="alternative" src="../images/image-placeholder.png">
-                    </div>
-                </div>
+            <div id="result_answer_div">
+                <p id="result_answer_text">answer</p>
+            </div>
+            <div id="result_button_div">
+                <button class="answer_button" id="result_yes">Search in Naver shopping</button>
+                <button class="answer_button" id="result_no">Keep answering</button>
             </div>
         </div>
 
         <!-- div for question page -->
         <div id="question">
             <div class="question_bg">
-                <input type="image" class="back_button" src="images/icon_back.png">
                 <div class="query">
+                    <div class="back_button_bg">
+                        <input type="image" class="back_button" src="images/icon_back_2.png">
+                    </div>
                     <div class="question">
                     </div>
+                    <hr width="70%">
                     <div class="choices">
                     </div>
                 </div>
@@ -197,12 +189,30 @@
                     <div id="wrongdiv8" class="wrongimgdiv">
                         <img id="wrongimage8" class="candidates" src="images/wrong.jpg">
                     </div>
+                    <div id="div9" class="imgdiv">
+                        <input type="image" id="image9" class="candidates" src="images/image-placeholder.png">
+                        <div class="image_textbox">
+                            <p id="image_text9" class="question_imgdiv_image_text">text</p>
+                        </div>
+                    </div>
+                    <div id="wrongdiv9" class="wrongimgdiv">
+                        <img id="wrongimage9" class="candidates" src="images/wrong.jpg">
+                    </div>
+                    <div id="div10" class="imgdiv">
+                        <input type="image" id="image10" class="candidates" src="images/image-placeholder.png">
+                        <div class="image_textbox">
+                            <p id="image_text10" class="question_imgdiv_image_text">text</p>
+                        </div>
+                    </div>
+                    <div id="wrongdiv10" class="wrongimgdiv">
+                        <img id="wrongimage10" class="candidates" src="images/wrong.jpg">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="./script.js"></script>
+    <script src="./script/script.js"></script>
 </body>
 
 </html>

@@ -1,14 +1,18 @@
-const gridsize = 12.5;
+const maxImage = 10;
+const Xoffset = [12.5,37.5,62.5,87.5,10,30,50,70,90,20,40,60,80];
+const Yoffset = [25,50,75];
 const offsetGrid = [
-	[[4,4]],[[2,4],[6,4]],[[4,2],[2,6],[6,6]],[[2,2],[6,2],[2,6],[6,6]],
-	[[3,2],[5,2],[2,6],[4,6],[6,6]],[[2,2],[4,2],[6,2],[2,6],[4,6],[6,6]],
-	[[2,2],[4,2],[6,2],[1,6],[3,6],[5,6],[7,6]],
-	[[1,2],[3,2],[5,2],[7,2],[1,6],[3,6],[5,6],[7,6]]
+	[[6,1]],[[1,1],[2,1]],[[5,1],[6,1],[7,1]],[[0,1],[1,1],[2,1],[3,1]],
+	[[4,1],[5,1],[6,1],[7,1],[8,1]],[[5,0],[6,0],[7,0],[5,2],[6,2],[7,2]],
+	[[5,0],[6,0],[7,0],[9,2],[10,2],[11,2],[12,2]],
+	[[0,0],[1,0],[2,0],[3,0],[0,2],[1,2],[2,2],[3,2]],
+	[[9,0],[10,0],[11,0],[12,0],[4,2],[5,2],[6,2],[7,2],[8,2]],
+	[[4,0],[5,0],[6,0],[7,0],[8,0],[4,2],[5,2],[6,2],[7,2],[8,2]]
 ];
 
 let imgpnt = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
 
-async function newQ(qni){
+async function newQ(qni, reverse=false){
 	// 1) go to fail
     if (qni === undefined) {
 		await fadeOutComponentById("question");
@@ -23,7 +27,7 @@ async function newQ(qni){
 	}
 
 	// 2) go to question
-    change_query(qni);
+    change_query(qni, reverse);
 
 	// manipuate candidate images
 	var curimgs = qni.images;
@@ -35,7 +39,7 @@ async function newQ(qni){
 
 	// hide incorrect
 	const disappearPromises = []
-	for (let i = 1; i <= 8; i++) {
+	for (let i = 1; i <= maxImage; i++) {
         if(disappearPIds.includes(imgpnt[i])){ // if this img in disappear list
             imgpnt[i] = -1; // empty box
             const disappearPromise = disappearDiv(i);
@@ -55,7 +59,7 @@ async function newQ(qni){
 		await alignimgs(curimgs.length);
 	
 		newPIds = newimgs.map(img => img.pId);
-		for (let i = 1; i <= 8; i++) {
+		for (let i = 1; i <= maxImage; i++) {
 			if(newPIds.includes(imgpnt[i])){
 				var div = document.getElementById(`div${i}`);
 				var img = curimgs.find(x=>x.pId==imgpnt[i]);
@@ -104,23 +108,47 @@ function disappearDiv(index){
     });
 }
 
-function hide_query(callback) {
-	return  $(".query").fadeOut(fadeTime, callback);
+function hide_query(reverse,callback) {
+	// return $(".query").animate({
+	// 	opacity: 0.0,
+	// },500,callback)
+	$(".query").fadeOut({queue:false, duration:fadeTime});
+	if(reverse){
+		$(".question").animate({marginLeft:20},{duration:fadeTime, complete:callback});
+		$(".question").animate({marginLeft:-20},{duration:1});
+	}
+	else{
+		$(".question").animate({marginLeft:-20},{duration:fadeTime, complete:callback});
+		$(".question").animate({marginLeft:20},{duration:1});
+	}
+	
+}
+
+function hide_query_reverse(callback) {
+	// return $(".query").animate({
+	// 	opacity: 0.0,
+	// },500,callback)
+	$(".query").fadeOut({queue:false, duration:fadeTime});
+	$(".question").animate({marginLeft:20},{duration:fadeTime, complete:callback});
+	$(".question").animate({marginLeft:-20},{duration:1});
 }
 
 function show_query() {
     return new Promise((resolve, reject) => {
-        $(".query").fadeIn(fadeTime, resolve);
+		$(".back_button_bg").show();
+		$(".query").fadeIn({queue:false, duration:fadeTime});
+		$(".question").animate({marginLeft:0},{duration:fadeTime, complete:resolve});
     });
 }
 
 function reset_query() {
+	$(".back_button_bg").hide();
     $(".question").empty();
     $(".choices").empty();
 }
 
-function change_query(qni){
-    hide_query(async function() {
+function change_query(qni, reverse){
+    hide_query(reverse,async function() {
 		reset_query();
 		// set next query
 		var query = qni.question;
@@ -147,7 +175,7 @@ function alignimgs(number) {
 	return new Promise(async (resolve, reject) => {
 		const promises = [];
 		var imgCount = 0;
-		for (let i = 1; i <= 8; i++) {
+		for (let i = 1; i <= maxImage; i++) {
             if (imgpnt[i] == -1) continue;
 
             //set animation
@@ -164,8 +192,8 @@ function alignimgs(number) {
 }
 
 function init_candidates(){
-	for(var i=1 ; i<= 8 ; i++){
-        let offset = getOffset(8,i);
+	for(var i=1 ; i<= maxImage ; i++){
+        let offset = getOffset(maxImage,i);
         $(`#wrongdiv${i}, #div${i}`).animate({left: offset[0] +"%",top: offset[1] +"%"}, 1);
         $(`#div${i}`).hide();
 		imgpnt[i]=-1;
@@ -174,5 +202,5 @@ function init_candidates(){
 
 function getOffset(number,index){
     let offset = offsetGrid[number-1][index-1];
-    return [offset[0]*gridsize, offset[1]*gridsize];
+    return [Xoffset[offset[0]], Yoffset[offset[1]]];
 }

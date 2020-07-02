@@ -2,31 +2,21 @@ var yes_button;
 var no_button;
 
 var fadeElements =[
-    "#result_middle",
-    "#result_bottom p",
-    "#result_bottom img"
+    "#result_images_div",
+    "#result_answer_div",
+    "#result_button_div"
 ];
 
-function test_enter(){
-    setProductImg(imgSource_test[2]);
-    setCandidatesImg(imgSource_test);
-    setProductname("Pokemon");
-    resultEnterAnimation();
-}
 function test_quit(){
     resultQuitAnimation();
 }
 
 
 function gotoResFromQuestion(pId) {
-	var product = products.find(e=>e.pId==pId);
 	if(document.getElementById("result").style.display=="none"){
 		fadeInComponentById("result");
 	}
-    setProductImg(product.mainImage);
-    setCandidatesImg(product.images);
-	setProductname(product.name);
-	setNobutton(pId);
+    setProductInfo(pId);
 	if(document.getElementById("result").style.marginTop!="0%"){
 		resultEnterAnimation();
 	}
@@ -37,21 +27,30 @@ function gotoResFromQuestion(pId) {
 }
 
 function gotoResFromImage(pId) {
-	var product = products.find(e=>e.pId==pId);
     fadeInComponentById("result");
-    setProductImg(product.mainImage);
-    setCandidatesImg(product.images);
-	setProductname(product.name);
-	setBackbutton();
+    setProductInfo(pId);
     resultEnterAnimation();
 }
 
+function setProductInfo(pId) {
+	const { name, mainImage, images } = products.find(e=>e.pId==pId);
+    // set main image
+    $("#result_images_main_image").attr("src", mainImage);
 
+    // set other images
+    $(".result_images_other_image").each(function(index) {
+        $(this).attr("src", images[index]);
+    });
+    
+    // set product name
+    $("#result_answer_text").html(name);
 
+    // set yes button click event
+    const buyLink = `https://search.shopping.naver.com/search/all?query=${encodeURI(name)}&frm=NVSHATC`
+    yes_button = document.querySelector("#result_yes");
+    yes_button.setAttribute("onClick","location.href=\""+buyLink+"\"");
 
-function setNobutton(pId){
-    $("#result_back").hide();
-    $("#result_no").show();
+    // set no button click event    
     $("#result_no").click(function(){
         const nextQni = getNextQuestionAndImages(undefined, undefined, pId);
         if(nextQni !== undefined && nextQni.pId !== undefined){ // next also result
@@ -62,34 +61,7 @@ function setNobutton(pId){
             newQ(nextQni);
             resultQuitAnimation();
         }
-    })
-}
-
-function setBackbutton(){
-    $("#result_no").hide();
-    $("#result_back").show();
-}
-
-function setProductname(name){
-    document.querySelector("#product_text").innerHTML=name;
-    document.querySelector("#result_bottom p").innerHTML="Other images of "+ name;
-
-    var nameuri = encodeURI(name)
-    var buylink = "https://search.shopping.naver.com/search/all?query="+nameuri+"&frm=NVSHATC"
-    yes_button = document.querySelector("#result_yes");
-    yes_button.setAttribute("onClick","location.href=\""+buylink+"\"");
-}
-
-function setCandidatesImg(imgList){
-    var img =  document.querySelectorAll("#result_bottom img");
-    img.forEach(function(element,index,array){
-        element.setAttribute("src",imgList[index]);
     });
-}
-
-function setProductImg(imgsrc){
-    var img =  document.querySelector("#product_img");
-    img.setAttribute("src",imgsrc);
 }
 
 function hideObjects(){
@@ -109,7 +81,8 @@ function resultEnterAnimation(){
             fadeInResultElements();
         }
         else {
-            pos--;
+            if(pos>30) pos-= int(pos/10);
+            else pos -= 0.5;
             elem.style.marginTop = pos+"%";
         }
     }
@@ -129,7 +102,7 @@ function doQuitAnimation(){
 	    $("#result").hide();
         }
         else {
-            pos++;
+            pos+=2;
             elem.style.marginTop = pos+"%";
         }
     }
@@ -143,7 +116,7 @@ function fadeInResultElements(){
 function fadeOutResultElements(){
     fadeElements.reverse();
     fadeElements.forEach(function(element,index,array) {
-        $(element).delay(index*200).fadeOut();
+        $(element).delay(index*100).fadeOut(200);
     });
     fadeElements.reverse();
 }
