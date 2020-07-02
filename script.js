@@ -10,12 +10,14 @@ function set_intro() {
 		const { name, mainImage } = introImages[i] 
 
         const sampleImageItem = `
-			<a href="${getBuyLink(name)}">
-				<img src="${mainImage}" class="intro_examples_image_src" onclick="location.href=\"${getBuyLink(name)}\"">
-				<div>${name}</div>
-			</a>`;
+			<li class="intro_examples_image_li">
+				<a href="${getBuyLink(name)}">
+                	<img src="${mainImage}" class="intro_examples_image_src" onclick="location.href=\"${getBuyLink(name)}\"">
+					<div>${name}</div>
+				</a>
+            </li>`;
         
-        $("#intro_recent_product").append(sampleImageItem);
+        $(".intro_examples_image_ul").append(sampleImageItem);
     }
 
     $("#intro_start_btn").click(async function () {

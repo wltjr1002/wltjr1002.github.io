@@ -25,7 +25,6 @@ async function newQ(qni){
 	// 2) go to question
     change_query(qni);
 
-	// manipuate candidate images
 	var curimgs = qni.images;
     const nextPIds = curimgs.map(img => img.pId)
     
@@ -33,7 +32,7 @@ async function newQ(qni){
     var newPIds = newimgs.map(img => img.pId);
     const disappearPIds = imgpnt.filter(pid => (pid!=-1)&&!(nextPIds.includes(pid)));
 
-	// hide incorrect
+    // hide incorrect 
 	const disappearPromises = []
 	for (let i = 1; i <= 8; i++) {
         if(disappearPIds.includes(imgpnt[i])){ // if this img in disappear list
@@ -47,41 +46,27 @@ async function newQ(qni){
 	}
 	await Promise.all(disappearPromises);
 
-	if (curimgs.length === 0) { // no candidate (on first question)
-		await appearNoCandidateDiv();
-	} else {
-		await disappearNoCandidateDiv();
-		// move image divs based on imgpnt
-		await alignimgs(curimgs.length);
-	
-		newPIds = newimgs.map(img => img.pId);
-		for (let i = 1; i <= 8; i++) {
-			if(newPIds.includes(imgpnt[i])){
-				var div = document.getElementById(`div${i}`);
-				var img = curimgs.find(x=>x.pId==imgpnt[i]);
-				$("#image_text"+i).text(img.name);
-				putImageAndFadeIn(div,i,img.mainImage);
-			}
-		}
-	} 
-}
+    // move image divs based on imgpnt
+	await alignimgs(curimgs.length);
 
-function disappearNoCandidateDiv() {
-	return new Promise((resolve, reject) => {
-		$("#no_candid_div").fadeOut(400, resolve);
-	});
-}
+    newPIds = newimgs.map(img => img.pId);
+	for (let i = 1; i <= 8; i++) {
+        if(newPIds.includes(imgpnt[i])){
+            var div = document.getElementById(`div${i}`);
+            var img = curimgs.find(x=>x.pId==imgpnt[i]);
+	    $("#image_text"+i).text(img.name);
+            putImageAndFadeIn(div,i,img.mainImage);
+        }
+    }
 
-function appearNoCandidateDiv() {
-	return new Promise((resolve, reject) => {
-		$("#no_candid_div").fadeIn(400, resolve);
-	});
+    
 }
 
 async function putImageAndFadeIn(div, j, mainImage) {
 	putimage(j, mainImage);
     $(div).fadeIn(500);
 }
+
 
 function putimage(img_ind, img_url){
     let img = document.getElementById("image"+img_ind);
@@ -91,7 +76,7 @@ function putimage(img_ind, img_url){
 function disappearDiv(index){
     const i = index;
     return new Promise((resolve, reject) => {
-       // $("#wrongdiv"+i).show();
+        $("#wrongdiv"+i).show();
         $("#div"+i).fadeOut(400, 
             (
                 function() {

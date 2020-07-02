@@ -54,7 +54,7 @@ function setNobutton(pId){
     $("#result_no").show();
     $("#result_no").click(function(){
         const nextQni = getNextQuestionAndImages(undefined, undefined, pId);
-        if(nextQni !== undefined && nextQni.pId !== undefined){ // next also result
+        if(nextQni.pId !== undefined){ // next also result
             fadeOutResultElements();
             newQ(nextQni);
         }

@@ -44,7 +44,7 @@ function getNextQuestionAndImages(answerIndex, chosenPId, excludePId) {
 
 function isAcceptableScore(score, questionNum) {
     const correctP = score * 100 / questionNum
-    return correctP > 50
+    return correctP > 80
 }
 
 function getNextData() {
@@ -54,9 +54,8 @@ function getNextData() {
     if (qAnswers.length === 0) {
         return {
             question: questions[currentQuestionIndex],
-            // images: getRandomProducts(maxImageLimit)
-            //     .map(extractDataFromProduct),
-            images: [],
+            images: getRandomProducts(maxImageLimit)
+                .map(extractDataFromProduct),
         }
     }
 
@@ -89,15 +88,12 @@ function getNextData() {
 
     // sort product by score
     sortListByProperty(productScores, "score");
-    const topScore = productScores[0].score;
     // if one product has unique highest score, return it
-    if (topScore != productScores[1].score) {
+    if (productScores[0].score != productScores[1].score) {
         return productScores[0].product;
     }
     
-    const candidateProducts = productScores
-        .filter(ps => isAcceptableScore(ps.score, qAnswers.length))
-        .filter(ps => ps.score === topScore)
+    const candidateProducts = productScores.filter(ps => isAcceptableScore(ps.score, qAnswers.length))
         .map(ps => ps.product);
     // if every product has 0 score, return fail
     if (candidateProducts.length === 0) {
@@ -171,7 +167,7 @@ function reset_algorithm() {
     currentQuestionIndex = undefined;
 }
 
-const introImageLimit = 1;
+const introImageLimit = 5;
 
 function getIntroImages() {
     return getRandomProducts(introImageLimit);
