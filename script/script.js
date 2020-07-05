@@ -59,7 +59,7 @@ function set_question(){
 		}
 	});
 	
-	for (let i = 1; i <= 8; i++) {
+	for (let i = 1; i <= maxImageLimit; i++) {
 		$(`#div${i}`).click(function() {
 			const pId = imgpnt[i];
 			getNextQuestionAndImages(undefined, pId, undefined);
